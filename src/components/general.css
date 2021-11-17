@@ -1,0 +1,104 @@
+@media screen and (max-width:600px){
+    td.desktop, th.desktop{
+        display: none;
+    }
+
+    #left-menu.default{
+        display: none;
+    }
+
+    /* #hamburgerMenuMobile{
+        display: inline-block;
+    }
+
+    #hamburgerMenuDesktop{
+        display: none;
+    } */
+    
+}
+
+@media screen and (min-width:600px){
+    td.mobile, th.mobile{
+        display: none;
+    }
+    #left-menu.default{
+        display: inline-flex;
+    }   
+    /* #hamburgerMenuMobile{
+        display: none;
+    }
+
+    #hamburgerMenuDesktop{
+        display: inline-block;
+    }     */
+    
+}
+
+tr.odd{
+    background-color: grey;
+    color: white;
+}
+
+tr.even{
+    background-color: white;
+    color: grey;
+}
+
+
+
+#title {
+    display: inline-block;
+    width:200px;
+    vertical-align: middle;
+}
+
+#hamburgerMenu {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 12px;
+    width:40px;
+    height: 40px;
+    border-style: solid;
+    border-color:grey;
+    border-width: 1px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+#hamburgerMenuLines{
+    margin: 2px 2px;
+}
+
+li{
+    text-align: left;
+}
+
+#left-menu{
+    display: inline-flex;
+    background-color: hotpink;
+    width:400px;
+    height: 100%;
+    float: left;
+}
+
+#left-menu.open{
+    display: inline-flex;
+}
+
+#left-menu.closed{
+    display: none;
+}
+
+
+#body-content{
+    display: inline-flex;
+    width: (100%-400px);
+    margin-right: 0px;
+    background-color: greenyellow;
+    height: 100%;
+}
+
+#body{
+    background-color: green;
+    width:100%;
+}

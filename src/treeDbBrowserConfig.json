@@ -1,0 +1,19 @@
+{
+    "rootUrl":"http://api.martinm38.sg-host.com/rest/1.0/",
+    "pages" : [
+        {
+            "name":"root",
+            "views":[
+                {
+                    "table":"part_type",
+                    "fieldList":[
+                        "id",
+                        "description"
+                    ]
+                }                
+            ]
+        }
+
+    ]
+
+}
