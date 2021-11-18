@@ -1,10 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import View from './components/View';
-import style from './components/general.css';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import react from 'react';
 import { useState, useEffect } from 'react';
+import Browser from './components/Browser';
 
 
 
@@ -16,7 +13,11 @@ function App() {
 
   useEffect(()=>{
     import("./browserConfig.json").then((result)=>{
+      console.log("ho caricato il file");
+      console.log(result);
+      //setBrowserConfig(result);
       setBrowserConfig(result);
+      console.log("name=");
       console.log(browserConfig);
     });
   },[]);
@@ -31,18 +32,20 @@ function App() {
     <div className="App">
 
       <header className="App-header">
-        <div id="hamburgerMenu" onClick={changeMenuState}>
+        {/* <div id="hamburgerMenu" onClick={changeMenuState}>
           <svg xmlns="http://www.w3.org/2000/svg" id="hamburgerMenuLines" height="36px" viewBox="0 0 24 24" width="36px" fill="#000000">
             <path d="M0 0h24v24H0V0z" fill="none" /><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
           </svg>
-        </div>
+        </div> */}
         <img src={logo} className="App-logo" alt="logo" />
-        <div id="title">React tree</div>
+        <div id="title">{(browserConfig)?browserConfig.name:""}</div>
 
       </header>
 
       <div id="body">
-        {/* <div id="left-menu" className={leftMenuClass}>
+        {/* 
+         tolto il menu
+          <div id="left-menu" className={leftMenuClass}>
           <ul>
             <li>
               <a className="App-link" href="/" rel="noopener noreferrer" >
@@ -59,30 +62,7 @@ function App() {
         <div id="body-content">
 
 
-        <Browser config={browserConfig} />
-
-          {/* <Router>
-
-            <Routes>
-              
-              {
-                (treebrowserConfig?
-                  (treebrowserConfig.views.map((viewConfig)=>(
-                    <Route path={(viewConfig.name="root")?"/":("/" + viewConfig.name + "/:id")} 
-                      element={<View viewConfig={viewConfig} rootUrl={treebrowserConfig.rootUrl} />} >
-                    </Route>
-                  )
-                  
-                )):
-                ""
-                )
-
-              }
-              
-            </Routes>
-
-          </Router> */}
-
+        {(browserConfig)?(<Browser config={browserConfig} />):(<div>licia</div>)}
 
         </div>
       </div>
@@ -92,5 +72,4 @@ function App() {
 }
 
 
-// <!--ListTable columns={columns} url={url} /-->
 export default App;

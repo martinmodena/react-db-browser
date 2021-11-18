@@ -1,10 +1,8 @@
-<App>
-    <Browser>
-        <Pages>
-        <Edit>
-        </Edit>
-        <Views>
-        </Views>        
-        </Pages>
-    </Browser>
-</App>
+
+
+const Edit = () => {
+
+    return (<div>Edit Part</div>)
+}
+
+export default Edit;

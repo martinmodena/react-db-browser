@@ -4,8 +4,8 @@ import axios from "axios"
 import { useParams } from "react-router";
 
 
-import ListRows from './ListRows.jsx';
-import ListHeader from './ListHeader.jsx';
+import ListRows from './ViewRows.jsx';
+import ListHeader from './ViewHeader.jsx';
 
 
 const ListTable = (props) => {

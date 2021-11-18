@@ -1,34 +1,60 @@
 {
-    "rootUrl":"http://api.martinm38.sg-host.com/rest/1.0/",
-    "pages" : [
+    "name": "browsering in models and cars",
+    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+    "pages": [
         {
-            "name":"root",
-            "edit":{
-                "table":"part_type",
-                "fields":[
-                    {"name":"id",
-                     "type":"integer"
+            "name": "root",
+            "edit": {
+                "table": "part_type",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "integer"
                     },
-                    {"name":"description",
-                        "type":"integer"
-                       }
-                   ]
+                    {
+                        "name": "description",
+                        "type": "integer"
+                    }
+                ]
             },
-            "views":[
+            "views": [
                 {
-                    "table":"part_type",
-                    "columns":[
-                        {"name":"id",
-                         "type":"integer"
+                    "table": "part_type",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
                         },
-                        {"name":"description",
-                            "type":"integer"
-                           }
-                       ]
-                }                
+                        {
+                            "name": "description",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "table": "car",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "model_id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "engine_code",
+                            "type": "string"
+                        },
+                        {
+                            "name": "model_specifics",
+                            "type": "string"
+                        }
+                    ]
+                }
             ]
         }
-
     ]
-
 }

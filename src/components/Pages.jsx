@@ -1,12 +1,18 @@
-import { Routes } from 'react-router-dom';
+import { Routes,Route } from 'react-router-dom';
+import Page from './Page';
 
 const Pages = (props) => {
 
-    props.config.map((pageConfig)=>( 
-        <Routes>   
-            <Page config={pageConfig} />
-        </Routes>
-    ))    
+    const config = props.config;
+    return (
+    <Routes>    
+    {config.map((pageConfig)=>( 
+           <Route path={(pageConfig.name == "root") ? "/" : ("/" + pageConfig.name + "/:id")} 
+            element={<Page config={pageConfig} />}></Route>
+            
+        
+    ))}
+    </Routes>)    
 }
 
 export default Pages;

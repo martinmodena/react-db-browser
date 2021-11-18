@@ -2,6 +2,8 @@
 
 const ListRows = (props) => {
 
+    const config = props.config;
+
     const joinCellContents4Mobile = (item, columns) => {
         let retString = '';
         let firstColumn = true;
@@ -28,9 +30,9 @@ const ListRows = (props) => {
             (
                 <tr key={"row_" + item.id} className={(index%2==1)?("even"):("odd")}>
                     <td key={"td_mobile_" + item.id} className="mobile" >
-                    {props.columns.map((fieldName) => (<p key={"p_" + fieldName + "_" + item.id} >{item[fieldName]}</p>))}
+                    {config.columns.map((column) => (<p key={"p_" + column.name + "_" + item.id} >{item[column.name]}</p>))}
                     </td>
-                    {props.columns.map((fieldName) => (<td key={"td_" + fieldName + "_" + item.id} className="desktop" >{item[fieldName]}</td>))}
+                    {config.columns.map((column) => (<td key={"td_" + column.name + "_" + item.id} className="desktop" >{item[column.name]}</td>))}
                 </tr>
             )
             )

@@ -1,17 +1,23 @@
-import { Route } from react - router - dom;
+import React from 'react';
+import { Route } from 'react-router-dom';
+import Edit from './Edit';
+import Views from './Views';
+//import {React,React.Fragment} from 'react';
 
 
 const Page = (props) => {
 
     const config = props.config;
 
+    console.log("in page");
+    console.log(config);
+
     return (
-    <Route path={(config.name = "root") ? "/" : ("/" + config.name + "/:id")} >
-        <Edit config={config.edit} />
-        <Views config={config.views} />
-    </Route>
+            <>
+                <Edit config={config.edit} />
+                <Views config={config.views} />
+            </>
     );
 }
-
 
 export default Page;
