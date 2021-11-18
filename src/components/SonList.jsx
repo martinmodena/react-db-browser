@@ -1,8 +1,0 @@
-
-
-
-
-
-// const SonsList = (props) =>{
-// propsmap
-// }

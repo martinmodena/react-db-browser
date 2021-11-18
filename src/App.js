@@ -7,28 +7,17 @@ import react from 'react';
 import { useState, useEffect } from 'react';
 
 
-const columns = ["id", "description", "description_4_path"];
-const url = 'http://api.martinm38.sg-host.com/rest/1.0/part_type/';
-
-
-            // "edit":{
-            //     "table":"part_type",
-            //     "fieldList":[
-            //         "id",
-            //         "description"
-            //     ]
-            // },
 
 function App() {
 
   const [leftMenuClass, setLeftMenuClass] = useState("default");
-  const [treeConfiguration, setTreeConfiguration] = useState();
+  const [browserConfig, setBrowserConfig] = useState();
   
 
   useEffect(()=>{
-    import("./treeDbBrowserConfig.json").then((result)=>{
-      setTreeConfiguration(result);
-      console.log(treeConfiguration);
+    import("./browserConfig.json").then((result)=>{
+      setBrowserConfig(result);
+      console.log(browserConfig);
     });
   },[]);
 
@@ -53,7 +42,7 @@ function App() {
       </header>
 
       <div id="body">
-        <div id="left-menu" className={leftMenuClass}>
+        {/* <div id="left-menu" className={leftMenuClass}>
           <ul>
             <li>
               <a className="App-link" href="/" rel="noopener noreferrer" >
@@ -66,17 +55,21 @@ function App() {
               </a>
             </li>
           </ul>
-        </div>
+        </div> */}
         <div id="body-content">
-          <Router>
+
+
+        <Browser config={browserConfig} />
+
+          {/* <Router>
 
             <Routes>
               
               {
-                (treeConfiguration?
-                  (treeConfiguration.views.map((viewConfig)=>(
+                (treebrowserConfig?
+                  (treebrowserConfig.views.map((viewConfig)=>(
                     <Route path={(viewConfig.name="root")?"/":("/" + viewConfig.name + "/:id")} 
-                      element={<View viewConfig={viewConfig} rootUrl={treeConfiguration.rootUrl} />} >
+                      element={<View viewConfig={viewConfig} rootUrl={treebrowserConfig.rootUrl} />} >
                     </Route>
                   )
                   
@@ -88,7 +81,9 @@ function App() {
               
             </Routes>
 
-          </Router>
+          </Router> */}
+
+
         </div>
       </div>
 

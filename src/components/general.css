@@ -6,14 +6,6 @@
     #left-menu.default{
         display: none;
     }
-
-    /* #hamburgerMenuMobile{
-        display: inline-block;
-    }
-
-    #hamburgerMenuDesktop{
-        display: none;
-    } */
     
 }
 
@@ -24,14 +16,6 @@
     #left-menu.default{
         display: inline-flex;
     }   
-    /* #hamburgerMenuMobile{
-        display: none;
-    }
-
-    #hamburgerMenuDesktop{
-        display: inline-block;
-    }     */
-    
 }
 
 tr.odd{

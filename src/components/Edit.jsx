@@ -1,0 +1,10 @@
+<App>
+    <Browser>
+        <Pages>
+        <Edit>
+        </Edit>
+        <Views>
+        </Views>        
+        </Pages>
+    </Browser>
+</App>
