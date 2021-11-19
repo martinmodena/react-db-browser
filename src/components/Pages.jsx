@@ -9,8 +9,6 @@ const Pages = (props) => {
     {config.map((pageConfig)=>( 
            <Route path={(pageConfig.name == "root") ? "/" : ("/" + pageConfig.name + "/:id")} 
             element={<Page config={pageConfig} />}></Route>
-            
-        
     ))}
     </Routes>)    
 }

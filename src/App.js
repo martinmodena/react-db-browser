@@ -31,41 +31,7 @@ function App() {
 
     <div className="App">
 
-      <header className="App-header">
-        {/* <div id="hamburgerMenu" onClick={changeMenuState}>
-          <svg xmlns="http://www.w3.org/2000/svg" id="hamburgerMenuLines" height="36px" viewBox="0 0 24 24" width="36px" fill="#000000">
-            <path d="M0 0h24v24H0V0z" fill="none" /><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
-          </svg>
-        </div> */}
-        <img src={logo} className="App-logo" alt="logo" />
-        <div id="title">{(browserConfig)?browserConfig.name:""}</div>
-
-      </header>
-
-      <div id="body">
-        {/* 
-         tolto il menu
-          <div id="left-menu" className={leftMenuClass}>
-          <ul>
-            <li>
-              <a className="App-link" href="/" rel="noopener noreferrer" >
-                Home
-              </a>
-            </li>
-            <li>
-              <a className="App-link" href="/partTypes" rel="noopener noreferrer" >
-                Part Types
-              </a>
-            </li>
-          </ul>
-        </div> */}
-        <div id="body-content">
-
-
-        {(browserConfig)?(<Browser config={browserConfig} />):(<div>licia</div>)}
-
-        </div>
-      </div>
+        {(browserConfig)?(<Browser config={browserConfig} />):(<div>Charging.. file browserConfig.json</div>)}
 
     </div>
   );

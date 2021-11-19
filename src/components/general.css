@@ -28,6 +28,17 @@ tr.even{
     color: grey;
 }
 
+.pageTitle{
+    background-color: #282c34;
+    height: 50px;
+    width:100%-padding;
+    padding: 5px;
+    
+   
+    text-align: center;
+    font-size: calc(10px + 2vmin);
+    color: #61dafb;  
+}
 
 
 #title {
