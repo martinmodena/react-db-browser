@@ -97,3 +97,20 @@ li{
     background-color: green;
     width:100%;
 }
+
+.activeView{
+    order:-1;
+}
+
+.activeViewRows{
+    order:-1;
+    display:block;
+}
+
+.inactiveViewRows{
+    display:none;
+}
+
+.Views{
+    display:grid;
+}

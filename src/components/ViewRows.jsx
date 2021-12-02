@@ -11,11 +11,11 @@ const ListRows = (props) => {
     }
 
     return (
-        <tbody>
+        <tbody className={(props.active===true)?"activeViewRows":"inactiveViewRows"}>
             {props.datas.map((item, index) =>
             
     
-        <tr key={item.id} className={(index%2==1)?("even"):("odd")} onClick={()=>window.open( config.editPage + "/" + item.id)} >
+        <tr key={item.id} className={(index%2==1)?("even"):("odd")} onClick={()=>window.open( config.editPage + "/" + item.id )} >
                     <td key={"td_mobile_" + item.id} className="mobile" >
                     {config.columns.map((column) => (<p key={"p_" + column.name + "_" + item.id} >{item[column.name]}</p>))}
                     </td>

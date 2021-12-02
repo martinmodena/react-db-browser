@@ -39,14 +39,14 @@ const View = (props) => {
             // "http://api.martinm38.sg-host.com/rest/1.0/part_type/"
             const url = rootUrl + config.table + "/";
             //console.log("browserContext=",browserContext);
-            return axios.get(url)
+            axios.get(url)
                 .then((response) => {
                     //console.log("records=",response.data);    
                     setList(response.data);
 
                 });
         }
-        useEffect(() => { fetchData(); }, []);
+        useEffect( fetchData, [] );
 
     // END OF RETRIEVING DATAS
 
@@ -63,13 +63,13 @@ const View = (props) => {
     const handleSearchString = (e) => setSearchString(e.target.value);
 
     return (
-        <div>
+        <div onClick={()=>{props.changeActiveView(config.table)}} className={(props.activeView===config.table)?"activeView":""}>
             <hr />
-            <p>{config.table}</p>
+            <p>{config.table + " " + filteredOrderedlist.length + " records"} </p>
             <input type="text" name="nome" onChange={handleSearchString} />
             <table>
                 <ViewHeader config={config} />
-                <ViewRows datas={filteredOrderedlist} config={config} />
+                <ViewRows datas={filteredOrderedlist} config={config} active={(props.activeView===config.table)?true:false} />
             </table>
         </div>
     )
