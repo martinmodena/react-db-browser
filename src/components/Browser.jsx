@@ -1,7 +1,7 @@
 import { BrowserRouter as Router } from 'react-router-dom';
 import Pages from './Pages';
 import style from './general.css';
-import { createContext } from 'react';
+//import { createContext } from 'react';
 import BrowserContext from './BrowserContext';
 import logo from '../logo.svg';
 
@@ -10,10 +10,6 @@ import logo from '../logo.svg';
 const Browser = (props) => {
 
     const config = props.config;
-
-    //console.log("in browser",config.name);
-
-    //return (<div>ciao</div>);
 
     return (
         <>
@@ -27,13 +23,9 @@ const Browser = (props) => {
                 <div id="title">{config.name}</div>
 
             </header>
-            {/* <div className="App-header">ecco il titolo della page
-            </div> */}
-
-
 
                     <BrowserContext.Provider value={{ "config": config }} >
-                        <Router>
+                        <Router basename="/tree-db-browser-2">
                             <Pages config={config.pages} />
                         </Router>
                     </BrowserContext.Provider>

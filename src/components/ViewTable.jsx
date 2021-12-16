@@ -4,7 +4,7 @@ import axios from "axios"
 import { useParams } from "react-router";
 
 
-import ListRows from './ViewRows.jsx';
+import ViewRows from './ViewRows.jsx';
 import ListHeader from './ViewHeader.jsx';
 
 
@@ -44,12 +44,12 @@ const ListTable = (props) => {
     const handleSearchString = (e) => setSearchString(e.target.value);
 
     return (
-        <div>
+        <div className="viewTable">
             <input type="text" name="nome" onChange={handleSearchString} />
             <table>
             {id}
                 <ListHeader columns={props.columns} />
-                <ListRows datas={filteredOrderedlist} columns={props.columns} />
+                <ViewRows datas={filteredOrderedlist} columns={props.columns} />
             </table>
         </div>
     )

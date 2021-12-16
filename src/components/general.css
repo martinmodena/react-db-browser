@@ -108,9 +108,15 @@ li{
 }
 
 .inactiveViewRows{
-    display:none;
+    /*display:none;*/
+    display:block;
 }
 
 .Views{
     display:grid;
+}
+
+.ViewRows{
+    height: 500px;
+    overflow-y: scroll;
 }

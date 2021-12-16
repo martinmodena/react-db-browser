@@ -5,6 +5,7 @@ import { useState } from 'react';
 const Views = (props) => {
     
     const config = props.config;
+    const parent = props.parent;
     
     const [activeView, setActiveView] = useState( "" ) ; 
 
@@ -19,11 +20,12 @@ const Views = (props) => {
         });
     }
 
+    let viewKey = 0;
     return (
         <div className="Views">
             {
             config.map((viewConfig) => {
-                return <View config={viewConfig} activeView={activeView} changeActiveView={changeActiveView}/>
+                return <View key={viewKey++} config={viewConfig}  parent={props} activeView={activeView} changeActiveView={changeActiveView}/>
             }
             )
             }

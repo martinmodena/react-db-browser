@@ -4,11 +4,13 @@ import Page from './Page';
 const Pages = (props) => {
 
     const config = props.config;
+
+    let pageKey = 0;
     return (
     <Routes>    
     {config.map((pageConfig)=>( 
-           <Route path={(pageConfig.name == "root") ? "/" : ("/" + pageConfig.name + "/:id")} 
-            element={<Page config={pageConfig} />}></Route>
+           <Route key={pageKey++} path={(pageConfig.name == "root") ? "/" : ("/" + pageConfig.name + "/:id")} 
+            element={<Page config={pageConfig} parent={props}/>}></Route>
     ))}
     </Routes>)    
 }

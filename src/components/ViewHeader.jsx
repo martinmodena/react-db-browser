@@ -3,12 +3,14 @@ const ViewHeader = (props) => {
 
     const config = props.config;
 
-    //console.log("in viewheader",config);
+    let columnKey = 0;
 
     return (
         <thead>
-            <th className="mobile">All the fields</th>
-            {config.columns.map((item) => <th className="desktop">{item.name}</th>) }
+            <tr>
+                <th className="mobile">All the fields</th>
+                {config.columns.map((item) => <th key={columnKey++} className="desktop">{item.name}</th>)}
+            </tr>
         </thead>
     )
 }

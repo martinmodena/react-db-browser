@@ -6,10 +6,9 @@ import { useParams } from "react-router";
 
 import ViewRows from './ViewRows.jsx';
 import ViewHeader from './ViewHeader.jsx';
-import { configure } from "@testing-library/dom";
 
 
-import BrowserContext  from './BrowserContext';
+import BrowserContext from './BrowserContext';
 
 
 const View = (props) => {
@@ -18,13 +17,14 @@ const View = (props) => {
 
     const [searchString, setSearchString] = useState("");
 
-    const {id} = useParams();
+    const { id } = useParams();
 
     const config = props.config;
 
+    const parent = props.parent;
+
     const browserContext = useContext(BrowserContext);
 
-    console.log("browserContext",browserContext);
 
     //const rootUrl = "http://api.martinm38.sg-host.com/rest/1.0/";
 
@@ -33,20 +33,31 @@ const View = (props) => {
 
     // RETRIEVING DATAS
 
-        const fetchData = () => {
-            //const url = config.url;
-            
-            // "http://api.martinm38.sg-host.com/rest/1.0/part_type/"
-            const url = rootUrl + config.table + "/";
-            //console.log("browserContext=",browserContext);
-            axios.get(url)
-                .then((response) => {
-                    //console.log("records=",response.data);    
-                    setList(response.data);
+    const fetchData = () => {
 
-                });
+        // create the additional string in case is a son
+        // like ?model_id=1664
+
+        let whereString = "";
+
+        if (parent.parent.config.table && parent.id) {
+            whereString = "?" + parent.parent.config.table + "_id=" + parent.id;
         }
-        useEffect( fetchData, [] );
+
+
+        // "http://api.martinm38.sg-host.com/rest/1.0/part_type/"
+        const url = rootUrl + config.table + whereString;
+
+        console.log("url=", url);
+
+        axios.get(url)
+            .then((response) => {
+
+                setList(response.data);
+
+            });
+    }
+    useEffect(fetchData, []);
 
     // END OF RETRIEVING DATAS
 
@@ -56,20 +67,20 @@ const View = (props) => {
     let regExp = new RegExp(toSearchString, 'i');
 
     const filteredOrderedlist = list.filter(
-        (item) => (config.columns.some((column) => ("" + item[column.name]).match(regExp)))
+       (item) => (config.columns.some((column) => ("" + item[column.name]).match(regExp)))
     );
-    // end of filtering
+    //end of filtering
 
     const handleSearchString = (e) => setSearchString(e.target.value);
 
     return (
-        <div onClick={()=>{props.changeActiveView(config.table)}} className={(props.activeView===config.table)?"activeView":""}>
+        <div onClick={() => { props.changeActiveView(config.table) }}  className={"View " + ((props.activeView === config.table) ? "activeView" : "")}>
             <hr />
             <p>{config.table + " " + filteredOrderedlist.length + " records"} </p>
             <input type="text" name="nome" onChange={handleSearchString} />
             <table>
                 <ViewHeader config={config} />
-                <ViewRows datas={filteredOrderedlist} config={config} active={(props.activeView===config.table)?true:false} />
+                <ViewRows datas={filteredOrderedlist} config={config} active={(props.activeView === config.table) ? true : false} />
             </table>
         </div>
     )

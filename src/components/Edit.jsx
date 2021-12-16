@@ -8,8 +8,6 @@ const Edit = (props) => {
 
     const config = props.config; 
 
-    console.log("edit config ",config);
-
     const [data,setData] = useState(); 
 
     // retrieve data
@@ -17,23 +15,22 @@ const Edit = (props) => {
     const params = useParams();
 
     const retrieveData = () => {
-        axios.get(browserContext.config.rootUrl + config.table + "/" + params.id).then((result)=>setData(result.data));
+
+        axios.get(browserContext.config.rootUrl + props.parent.config.table + "/" + params.id).then((result)=>setData(result.data));
     }    
 
-    const updateData = () => {
-        console.log("sto facendo l'update");
-    }
+    console.log("in edit config=", config);
 
     const browserContext = useContext(BrowserContext);
 
-    console.log("params.id:",params.id);
+    let fieldKey = 0;    
 
     useEffect(retrieveData,[]);
 
     return (data)?(<div>
         <div>Edit Part</div>
-        {config.fields.map((field)=>(<div>{browserContext.config.rootUrl + " " + field.name + " " + field.type }
-            <Input type="text" value={data[field.name]} config={field} parent={props} id={params.id}/></div>))}
+        {config.fields.map((field)=>(<div key={fieldKey++} >{ field.name }
+        <Input type="text" value={data[field.name]} config={field} parent={props} id={params.id}/></div>))}
         </div>):(<>loading...</>)
 }
 

@@ -1,13 +1,19 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+
 import Edit from './Edit';
 import Views from './Views';
-//import {React,React.Fragment} from 'react';
+
+import { useParams } from 'react-router';
 
 
 const Page = (props) => {
 
     const config = props.config;
+    const params = useParams();
+    const parent = props.parent;
+
+
+    console.log("page props=" , props);
 
     return (
         <div id="body">
@@ -29,9 +35,8 @@ const Page = (props) => {
   </ul>
  </div> */}
         <div id="body-content">
-
-                {(config.edit)?<Edit config={config.edit} />:""}
-                {(config.views)?<Views config={config.views} />:""}
+                {(config.edit)?<Edit config={config.edit} parent={props} id={params.id}/>:null}
+                {(config.views)?<Views config={config.views} parent={props} id={params.id} />:null}
         </div>
     </div>        
     );

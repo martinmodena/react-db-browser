@@ -4,21 +4,24 @@
     "pages": [
         {
             "name": "root",
-            "description":"Root of all",
-            "edit": {
-                "table": "part_type",
-                "fields": [
-                    {
-                        "name": "id",
-                        "type": "integer"
-                    },
-                    {
-                        "name": "description",
-                        "type": "integer"
-                    }
-                ]
-            },
+            "description": "Root of all",
             "views": [
+                {
+                    "table": "richiesta_esaminata",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "editPage": "richiesta_esaminata_1",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "utente_id",
+                            "type": "integer"
+                        }
+                    ]
+                },
+
                 {
                     "table": "part_type",
                     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
@@ -30,6 +33,25 @@
                         },
                         {
                             "name": "description",
+                            "type": "integer"
+                        }
+                    ]
+                },
+                {
+                    "table": "model",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "editPage": "model_1",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "description",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "make_id",
                             "type": "integer"
                         }
                     ]
@@ -61,9 +83,9 @@
         },
         {
             "name": "part_type_1",
-            "description":"Edit part type",
+            "description": "Edit part type",
+            "table": "part_type",
             "edit": {
-                "table": "part_type",
                 "fields": [
                     {
                         "name": "id",
@@ -74,13 +96,56 @@
                         "type": "integer"
                     }
                 ]
-            }
+            },
+            "views": []
+        },
+        {
+            "name": "model_1",
+            "description": "Model modify",
+            "table": "model",
+            "edit": {
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "description",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "make_id",
+                        "type": "integer"
+                    }
+                ]
+            },
+            "views": [
+                {
+                    "table": "car",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "editPage": "car_1",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "model_id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "model_specifics",
+                            "type": "integer"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "name": "car_1",
-            "description":"Car modify",
+            "description": "Car modify",
+            "table": "car",
             "edit": {
-                "table": "car",
                 "fields": [
                     {
                         "name": "id",
@@ -100,7 +165,6 @@
                     }
                 ]
             }
-        }        
-
+        }
     ]
 }

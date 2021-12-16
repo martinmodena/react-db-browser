@@ -1,3 +1,14 @@
+# Martin innovative feature of this project: 
+
+1. totally responsive columns of table (an auxiliar column) 
+
+2. passing parent props
+
+3. 
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

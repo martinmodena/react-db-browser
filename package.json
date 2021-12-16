@@ -2,6 +2,7 @@
   "name": "tree-db-browser-1",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://martinm38.sg-host.com/tree-db-browser-2",
   "dependencies": {
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
