@@ -50,12 +50,14 @@ const View = (props) => {
 
         console.log("url=", url);
 
-        axios.get(url)
-            .then((response) => {
+        const dataPromise = axios.get(url);
 
+        dataPromise.then((response) => {
                 setList(response.data);
+        });
 
-            });
+        
+
     }
     useEffect(fetchData, []);
 

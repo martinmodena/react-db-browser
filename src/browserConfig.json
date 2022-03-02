@@ -1,5 +1,4 @@
-{
-    "name": "browsering in models and cars",
+{    "name": "browsering in models and cars",
     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
     "pages": [
         {
@@ -52,7 +51,15 @@
                         },
                         {
                             "name": "make_id",
-                            "type": "integer"
+                            "type": "lookup",
+                            "typeAdditionalData":{
+                                "columns":[
+                                    {
+                                        "name" : "make.description",
+                                        "type" : "string"
+                                    }
+                                ]
+                            }
                         }
                     ]
                 },

@@ -4,12 +4,44 @@ import style from './general.css';
 //import { createContext } from 'react';
 import BrowserContext from './BrowserContext';
 import logo from '../logo.svg';
-
+import {useState, useEffect } from 'react';
+import extractLookUpTable from './extractLookUpTable';
+import axios from 'axios';
 
 
 const Browser = (props) => {
 
     const config = props.config;
+    const [lookupTables, setLookupTables ] = useState({});
+
+    //useEffect( ()=> setLookupTables(extractLookUpTable(config)), []);
+
+    useEffect( ()=>{
+        const lookupTableNames = extractLookUpTable(config);
+        console.log(lookupTableNames);
+        //lookupTablesconsole.log("lookupTables =",lookupTables);
+        const promiseArray = [];
+        lookupTableNames.forEach(tableName => {
+            console.log("for each lookup table",tableName);
+            const dataPromise = axios.get( config.rootUrl + tableName );
+            dataPromise.then( response => setLookupTables( old => old[tableName]=response.data ));
+            promiseArray.push(dataPromise);
+        });
+        Promise.all(promiseArray).then(()=>console.log("lookupTables",lookupTables));
+    }
+    , []);
+
+
+    // const url = config.rootUrl + config.table ;
+
+    // console.log("url=", url);
+
+    // const dataPromise = axios.get(url);
+
+    // dataPromise.then((response) => {
+    //         setList(response.data);
+    // });
+
 
     return (
         <>
@@ -24,16 +56,15 @@ const Browser = (props) => {
 
             </header>
 
-                    <BrowserContext.Provider value={{ "config": config }} >
+                    <BrowserContext.Provider value={{ config , lookupTables}} >
                         <Router basename="/tree-db-browser-2">
-                            <Pages config={config.pages} />
+                            {config.pages?<Pages config={config.pages}/>:"waiting for configuration..."}
                         </Router>
                     </BrowserContext.Provider>
 
 
         </>
     ) 
-
 
 }
 

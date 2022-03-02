@@ -5,6 +5,8 @@ const Pages = (props) => {
 
     const config = props.config;
 
+    console.log("Pages config = ",config);
+
     let pageKey = 0;
     return (
     <Routes>    

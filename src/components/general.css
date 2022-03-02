@@ -18,12 +18,12 @@
     }   
 }
 
-tr.odd{
+tr{
     background-color: grey;
     color: white;
 }
 
-tr.even{
+tr:nth-child(odd){
     background-color: white;
     color: grey;
 }
@@ -86,10 +86,10 @@ li{
 
 
 #body-content{
-    display: inline-flex;
-    width: (100%-400px);
-    margin-right: 0px;
-    background-color: greenyellow;
+    display: grid;
+    width: 100%;
+    place-items: center;
+    background-color: lightgray;
     height: 100%;
 }
 
