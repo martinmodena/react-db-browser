@@ -109,7 +109,7 @@ li{
 
 .inactiveViewRows{
     /*display:none;*/
-    display:block;
+    display:content;
 }
 
 .Views{

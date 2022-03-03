@@ -29,6 +29,24 @@ const Views = (props) => {
             }
             )
             }
+            <table>
+                <thead>
+                    <tr>
+                        <th>prima intestazione </th>
+                        <th>seconda intestazione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr>
+                        <th>prima</th>
+                        <th>seconda</th>
+                    </tr>  
+                                    <tr>
+                        <th>prima</th>
+                        <th>seconda</th>
+                    </tr>                    
+                </tbody>
+            </table>
         </div>
     );
 }

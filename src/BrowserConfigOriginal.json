@@ -6,7 +6,21 @@
             "description": "Root of all",
             "views": [
 
-
+                {
+                    "table": "richiesta_esaminata",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "editPage": "richiesta_esaminata_1",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "utente_id",
+                            "type": "integer"
+                        }
+                    ]
+                },
                 {
                     "table": "part_type",
                     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
@@ -22,7 +36,33 @@
                         }
                     ]
                 },
-
+                {
+                    "table": "model",
+                    "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
+                    "editPage": "model_1",
+                    "columns": [
+                        {
+                            "name": "id",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "description",
+                            "type": "integer"
+                        },
+                        {
+                            "name": "make_id",
+                            "type": "lookup",
+                            "typeAdditionalData":{
+                                "columns":[
+                                    {
+                                        "name" : "description",
+                                        "type" : "string"
+                                    }
+                                ]
+                            }
+                        }
+                    ]
+                },
                 {
                     "table": "car",
                     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
@@ -34,28 +74,7 @@
                         },
                         {
                             "name": "model_id",
-                            "type": "lookup",
-                            "typeAdditionalData":{
-                                "columns":[
-                                    {
-                                        "name" : "description",
-                                        "type" : "string"
-                                    },
-                                    {    
-                                        "name" : "make_id",
-                                        "type" : "lookup",
-                                        "typeAdditionalData":{
-                                            "columns":[
-                                                {
-                                                    "name" : "description",
-                                                    "type" : "string"
-            
-                                                }
-                                            ]
-                                        }                            
-                                    }
-                                ]
-                            }                            
+                            "type": "integer"
                         },
                         {
                             "name": "engine_code",

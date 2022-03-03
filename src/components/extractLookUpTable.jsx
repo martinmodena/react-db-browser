@@ -27,8 +27,8 @@ const extractLookUpTable = (jsonObject) =>{
           }
        }  
     }
-    
-    return tableList;
+    // cut out the doubles
+    return  Array.from(new Set(tableList));
 }
 
 export default extractLookUpTable;

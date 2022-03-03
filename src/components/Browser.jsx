@@ -13,6 +13,7 @@ const Browser = (props) => {
 
     const config = props.config;
     const [lookupTables, setLookupTables ] = useState({});
+    const [lookupTablesReady,setLookupTablesReady] = useState(false);
 
     //useEffect( ()=> setLookupTables(extractLookUpTable(config)), []);
 
@@ -24,10 +25,10 @@ const Browser = (props) => {
         lookupTableNames.forEach(tableName => {
             console.log("for each lookup table",tableName);
             const dataPromise = axios.get( config.rootUrl + tableName );
-            dataPromise.then( response => setLookupTables( old => old[tableName]=response.data ));
+            dataPromise.then( response => setLookupTables( old => {old[tableName]=response.data; return old; }));
             promiseArray.push(dataPromise);
         });
-        Promise.all(promiseArray).then(()=>console.log("lookupTables",lookupTables));
+        Promise.all(promiseArray).then(()=>setLookupTablesReady(true));
     }
     , []);
 
@@ -55,13 +56,15 @@ const Browser = (props) => {
                 <div id="title">{config.name}</div>
 
             </header>
-
+                {lookupTablesReady===true?
                     <BrowserContext.Provider value={{ config , lookupTables}} >
                         <Router basename="/tree-db-browser-2">
                             {config.pages?<Pages config={config.pages}/>:"waiting for configuration..."}
                         </Router>
                     </BrowserContext.Provider>
-
+                :
+                "waiting for lookUp tables charging....   "
+}
 
         </>
     ) 

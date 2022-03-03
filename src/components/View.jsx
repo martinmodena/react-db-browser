@@ -53,10 +53,10 @@ const View = (props) => {
         const dataPromise = axios.get(url);
 
         dataPromise.then((response) => {
-                setList(response.data);
+                setList( response.data );
         });
 
-        
+
 
     }
     useEffect(fetchData, []);

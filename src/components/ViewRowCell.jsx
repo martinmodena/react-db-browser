@@ -10,7 +10,7 @@ const ViewRowCell = (props) =>{
 
     switch (config.type){
         case "lookup":
-            return <ViewRowCellLookup parent={config} />;
+            return <ViewRowCellLookup config={config} value={value} />;
         default:
             return value;
     }
