@@ -104,19 +104,21 @@ li{
 
 .activeViewRows{
     order:-1;
-    display:block;
+    
 }
 
-.inactiveViewRows{
-    /*display:none;*/
-    display:content;
-}
+
+
+
 
 .Views{
     display:grid;
 }
 
-.ViewRows{
+
+
+.ViewTable{
     height: 500px;
     overflow-y: scroll;
+    display: block; 
 }

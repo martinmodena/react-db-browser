@@ -1,14 +1,14 @@
 import axios from "axios";
 import BrowserContext from "./BrowserContext.jsx";
-import { useContext,useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Input from './Input.jsx';
 
 const Edit = (props) => {
 
-    const config = props.config; 
+    const config = props.config;
 
-    const [data,setData] = useState(); 
+    const [data, setData] = useState();
 
     // retrieve data
 
@@ -16,22 +16,37 @@ const Edit = (props) => {
 
     const retrieveData = () => {
 
-        axios.get(browserContext.config.rootUrl + props.parent.config.table + "/" + params.id).then((result)=>setData(result.data));
-    }    
+        axios.get(browserContext.config.rootUrl + props.parent.config.table + "/" + params.id).then((result) => setData(result.data));
+    }
 
-    console.log("in edit config=", config);
+
+
+
+    //console.log("in edit config=", config);
 
     const browserContext = useContext(BrowserContext);
 
-    let fieldKey = 0;    
+    let fieldKey = 0;
 
-    useEffect(retrieveData,[]);
+    useEffect(retrieveData, []);
 
-    return (data)?(<div>
+    return (data) ? (<div>
         <div>Edit Part</div>
-        {config.fields.map((field)=>(<div key={fieldKey++} >{ field.name }
-        <Input type="text" value={data[field.name]} config={field} parent={props} id={params.id}/></div>))}
-        </div>):(<>loading...</>)
+        <table>
+            <thead><tr><th>Field</th><th>Value</th></tr></thead>
+            <tbody>
+                {config.fields.map((field) => (
+                    <tr key={fieldKey++} >
+                        <td >{field.name}</td>
+                        <td><Input type="text" value={data[field.name] || ""} config={field} parent={props} id={params.id} /></td>
+                    </tr>
+                )
+                )
+                }
+            </tbody>
+        </table>
+
+    </div>) : (<>loading...</>)
 }
 
 export default Edit;

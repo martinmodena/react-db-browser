@@ -1,12 +1,11 @@
-{    "name": "browsering in models and cars",
+{
+    "name": "browsering in models and cars",
     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
     "pages": [
         {
             "name": "root",
             "description": "Root of all",
             "views": [
-
-
                 {
                     "table": "part_type",
                     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
@@ -22,7 +21,6 @@
                         }
                     ]
                 },
-
                 {
                     "table": "car",
                     "rootUrl": "http://api.martinm38.sg-host.com/rest/1.0/",
@@ -35,27 +33,26 @@
                         {
                             "name": "model_id",
                             "type": "lookup",
-                            "typeAdditionalData":{
-                                "columns":[
+                            "typeAdditionalData": {
+                                "columns": [
                                     {
-                                        "name" : "description",
-                                        "type" : "string"
+                                        "name": "description",
+                                        "type": "string"
                                     },
-                                    {    
-                                        "name" : "make_id",
-                                        "type" : "lookup",
-                                        "typeAdditionalData":{
-                                            "columns":[
+                                    {
+                                        "name": "make_id",
+                                        "type": "lookup",
+                                        "typeAdditionalData": {
+                                            "columns": [
                                                 {
-                                                    "name" : "description",
-                                                    "type" : "string"
-            
+                                                    "name": "description",
+                                                    "type": "string"
                                                 }
                                             ]
-                                        }                            
+                                        }
                                     }
                                 ]
-                            }                            
+                            }
                         },
                         {
                             "name": "engine_code",
@@ -141,7 +138,27 @@
                     },
                     {
                         "name": "model_id",
-                        "type": "integer"
+                        "type": "lookup",
+                        "typeAdditionalData": {
+                            "columns": [
+                                {
+                                    "name": "make_id",
+                                    "type": "lookup",
+                                    "typeAdditionalData": {
+                                        "columns": [
+                                            {
+                                                "name": "description",
+                                                "type": "string"
+                                            }
+                                        ]
+                                    }
+                                },
+                                {
+                                    "name": "description",
+                                    "type": "string"
+                                }
+                            ]
+                        }
                     },
                     {
                         "name": "engine_code",

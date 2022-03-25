@@ -7,27 +7,26 @@ import { useParams } from "react-router";
 import ViewRows from './ViewRows.jsx';
 import ListHeader from './ViewHeader.jsx';
 
-
 const ListTable = (props) => {
 
     const [list, setList] = useState([]);
 
     const [searchString, setSearchString] = useState("");
 
-    const {id} = useParams();
+    const { id } = useParams();
 
     // RETRIEVING DATAS
 
-        const fetchData = () => {
-            const url = props.url;
-            return axios.get(url)
-                .then((response) => {
+    const fetchData = () => {
+        const url = props.url;
+        return axios.get(url)
+            .then((response) => {
 
-                    setList(response.data);
+                setList(response.data);
 
-                });
-        }
-        useEffect(() => { fetchData(); }, []);
+            });
+    }
+    useEffect(() => { fetchData(); }, []);
 
     // END OF RETRIEVING DATAS
 
@@ -47,7 +46,7 @@ const ListTable = (props) => {
         <div className="viewTable">
             <input type="text" name="nome" onChange={handleSearchString} />
             <table>
-            {id}
+                {id}
                 <ListHeader columns={props.columns} />
                 <ViewRows datas={filteredOrderedlist} columns={props.columns} />
             </table>

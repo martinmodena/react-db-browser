@@ -4,7 +4,7 @@ import style from './general.css';
 //import { createContext } from 'react';
 import BrowserContext from './BrowserContext';
 import logo from '../logo.svg';
-import {useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import extractLookUpTable from './extractLookUpTable';
 import axios from 'axios';
 
@@ -12,25 +12,25 @@ import axios from 'axios';
 const Browser = (props) => {
 
     const config = props.config;
-    const [lookupTables, setLookupTables ] = useState({});
-    const [lookupTablesReady,setLookupTablesReady] = useState(false);
+    const [lookupTables, setLookupTables] = useState({});
+    const [lookupTablesReady, setLookupTablesReady] = useState(false);
 
     //useEffect( ()=> setLookupTables(extractLookUpTable(config)), []);
 
-    useEffect( ()=>{
+    useEffect(() => {
         const lookupTableNames = extractLookUpTable(config);
         console.log(lookupTableNames);
         //lookupTablesconsole.log("lookupTables =",lookupTables);
         const promiseArray = [];
         lookupTableNames.forEach(tableName => {
-            console.log("for each lookup table",tableName);
-            const dataPromise = axios.get( config.rootUrl + tableName );
-            dataPromise.then( response => setLookupTables( old => {old[tableName]=response.data; return old; }));
+            console.log("for each lookup table", tableName);
+            const dataPromise = axios.get(config.rootUrl + tableName);
+            dataPromise.then(response => setLookupTables(old => { old[tableName] = response.data; return old; }));
             promiseArray.push(dataPromise);
         });
-        Promise.all(promiseArray).then(()=>setLookupTablesReady(true));
+        Promise.all(promiseArray).then(() => setLookupTablesReady(true));
     }
-    , []);
+        , []);
 
 
     // const url = config.rootUrl + config.table ;
@@ -56,20 +56,21 @@ const Browser = (props) => {
                 <div id="title">{config.name}</div>
 
             </header>
-                {lookupTablesReady===true?
-                    <BrowserContext.Provider value={{ config , lookupTables}} >
-                        <Router basename="/tree-db-browser-2">
-                            {config.pages?<Pages config={config.pages}/>:"waiting for configuration..."}
-                        </Router>
-                    </BrowserContext.Provider>
+            {lookupTablesReady === true ?
+                <BrowserContext.Provider value={{ config, lookupTables }} >
+                    <Router basename="/tree-db-browser-2">
+                        {config.pages ? <Pages config={config.pages} /> : "waiting for configuration..."}
+                    </Router>
+                </BrowserContext.Provider>
                 :
                 "waiting for lookUp tables charging....   "
-}
+            }
 
         </>
-    ) 
+    )
 
 }
+
 
 
 export default Browser;

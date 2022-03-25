@@ -40,10 +40,9 @@ const View = (props) => {
 
         let whereString = "";
 
-        if (parent.parent.config.table && parent.id) {
+        if (parent?.config?.table && parent?.id) {
             whereString = "?" + parent.parent.config.table + "_id=" + parent.id;
         }
-
 
         // "http://api.martinm38.sg-host.com/rest/1.0/part_type/"
         const url = rootUrl + config.table + whereString;
@@ -53,13 +52,51 @@ const View = (props) => {
         const dataPromise = axios.get(url);
 
         dataPromise.then((response) => {
-                setList( response.data );
+            setList(response.data);
+            console.log("response.data initial", response.data);
         });
-
-
 
     }
     useEffect(fetchData, []);
+
+
+    const createRecord = () => {
+
+        const url = rootUrl + config.table;
+
+        console.log("createRecord:url=", url);
+
+        const dataPromise = axios.post(url);
+
+        dataPromise.then((response) => {
+            console.log("response.data createRecord", response.data);
+            setList((list) => {
+                console.log("in setList created record:", response.data);
+                return [...list, response.data];
+            }
+            );
+        });
+    }
+
+
+    const deleteRecord = (id) => {
+
+        const url = rootUrl + config.table + '/' + id;
+
+        console.log("createRecord:url=", url);
+
+        const dataPromise = axios.delete(url);
+
+        dataPromise.then((response) => {
+            console.log("response.data createRecord", response.data);
+            setList((list) => {
+                console.log("in setList created record:", response.data);
+                return list.filter(item => item.id !== id)
+            }
+            );
+        });
+    }
+
 
     // END OF RETRIEVING DATAS
 
@@ -69,20 +106,21 @@ const View = (props) => {
     let regExp = new RegExp(toSearchString, 'i');
 
     const filteredOrderedlist = list.filter(
-       (item) => (config.columns.some((column) => ("" + item[column.name]).match(regExp)))
+        (item) => (config.columns.some((column) => ("" + item[column.name]).match(regExp)))
     );
     //end of filtering
 
     const handleSearchString = (e) => setSearchString(e.target.value);
 
     return (
-        <div onClick={() => { props.changeActiveView(config.table) }}  className={"View " + ((props.activeView === config.table) ? "activeView" : "")}>
+        <div className="View " >
             <hr />
             <p>{config.table + " " + filteredOrderedlist.length + " records"} </p>
             <input type="text" name="nome" onChange={handleSearchString} />
-            <table>
+            <button onClick={createRecord} >Create</button>
+            <table className="ViewTable">
                 <ViewHeader config={config} />
-                <ViewRows datas={filteredOrderedlist} config={config} active={(props.activeView === config.table) ? true : false} />
+                <ViewRows datas={filteredOrderedlist} config={config} deleteRecord={deleteRecord} />
             </table>
         </div>
     )
