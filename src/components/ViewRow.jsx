@@ -15,6 +15,7 @@ const ViewRow = (props) => {
     // const setFunctionGetHighLevelHandler = props.setFunctionGetHighLevelHandler;
 
 
+
     // if(setFunctionGetHighLevelHandler){
     //     console.log("in viewRow i'm setting functionGetHighLevelHandler");
     //     setFunctionGetHighLevelHandler( function(){ console.log("ref=",ref); } );
@@ -55,7 +56,7 @@ const ViewRow = (props) => {
                     }
 
                 }
-                    state={{ mmm: "a parte" }}
+                    state={{ martin: "martino" }}
                 >
                     <FontAwesomeIcon icon={faEdit} />pippo
                 </Link>

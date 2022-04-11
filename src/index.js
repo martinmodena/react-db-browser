@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const forConsoleLogApp = <App />;
+
+console.log("App=", <App />);
+//console.log("App()=", App());
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
